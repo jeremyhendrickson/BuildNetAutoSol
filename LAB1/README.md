@@ -11,8 +11,28 @@ Need proof of life for Ansible
 
 #### Topology
 ```
-sw1 ge-0/1/2 <-----> ge-0/1/2 sw2 xe-0/1/3 <-----> xe-0/1/2 sw3
++-----+
+| sw1 |
++-----+
+   |
+   |
++-----+
+| sw2 |
++-----+
+   |
+   |
++-----+
+| sw3 |
++-----+
 ```
+
+#### Interfaces
+
+Device | Interface | Device | Interface
+---|---|---|---
+sw1 | ge-0/1/2 | sw2 | ge-0/1/2
+sw2 | xe-0/1/3 | sw3 | xe-0/1/2
+
 #### OOB Interfaces
 I plan to use Ansible to manage devices via their OOB or Management VRFs.  That is how I am currently connecting to the EX2300 switches.
 
