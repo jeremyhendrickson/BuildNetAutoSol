@@ -16,11 +16,11 @@ sw1 ge-0/1/2 <-----> ge-0/1/2 sw2 xe-0/1/3 <-----> xe-0/1/2 sw3
 #### OOB Interfaces
 I plan to use Ansible to manage devices via their OOB or Management VRFs.  That is how I am currently connecting to the EX2300 switches.
 
-Device | Management IP | Console Port
----|---|---
-ex2300-sw1 | 192.0.2.15 | 17
-ex2300-sw2 | 192.0.2.16 | 18
-ex2300-sw3 | 192.0.2.17 | 19
+Device | Management IP | Interface | Console Port
+---|---|---|---
+ex2300-sw1 | 192.0.2.15 | vme.0 | 17
+ex2300-sw2 | 192.0.2.16 | vme.0 | 18
+ex2300-sw3 | 192.0.2.17 | vme.0 | 19
 
 #### VLANS and L3 Interfaces
 Device | Layer 3 IP | Layer 3 VLAN
