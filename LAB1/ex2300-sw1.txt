@@ -1,0 +1,57 @@
+set system host-name ex2300-sw1
+set system auto-snapshot
+set chassis redundancy graceful-switchover
+#
+# Access port settings
+set wildcard range interface ge-[0-1]/0/[0-47] unit 0 family ethernet-switching interface mode access
+set wildcard range interface ge-[0-1]/0/[0-47] unit 0 family ethernet-switching vlan members OfficeVLAN
+set wildcard range interface ge-[0-1]/0/[0-47] unit 0 family ethernet-switching storm-control default
+#
+# Stack and uplink port settings
+set interfaces xe-0/1/0 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/1/0 description stackport
+set interfaces xe-0/1/1 unit 0 family ethernet-switching storm-control default
+set interfaces xe-0/1/1 description stackport
+set interfaces ge-0/1/2 unit 0 family ethernet-switching interface-mode trunk
+set interfaces ge-0/1/2 unit 0 family ethernet-switching vlan members all
+set interfaces ge-0/1/2 unit 0 family ethernet-switching storm-control default
+set interfaces ge-0/1/2 description 'Uplink to ex2300-sw2'
+set interfaces xe-1/1/0 unit 0 family ethernet-switching storm-control default
+set interfaces xe-1/1/0 description stackport
+set interfaces xe-1/1/1 unit 0 family ethernet-switching storm-control default
+set interfaces xe-1/1/1 description stackport
+#
+# L3 interfaces
+set interfaces irb unit 0 family inet dhcp vendor-id Juniper-ex2300-48p
+set interfaces irb unit 101 family inet address 10.0.2.254/24
+# OOB Management Interface
+set interfaces vme unit 0 family inet address 192.0.2.15/24
+#
+# Routes and Protocols
+set forwarding-options storm-control-profiles default all
+set routing-options static route 0.0.0.0/0 next-hop 10.0.2.1
+set protocols lldp interface all
+set protocols lldp-med interface all
+set protocols igmp-snooping vlan default
+set protocols rstp interface all
+set wildcard range switch-options voip interface ge-[0-1]/0/[0-47] unit 0 vlan VoiceVLAN
+#
+# Virtual Chassis settings
+set virtual-chassis preprovisioned
+set virtual-chassis no-split-detection
+set virtual-chassis member 0 role routing-engine
+set virtual-chassis member 0 serial-number JW0217520200
+set virtual-chassis member 1 role routing-engine
+set virtual-chassis member 1 serial-number JW0217520118
+set virtual-chassis aliases serial-number JW0217520200 alias-name ex2300-sw1-re0
+set virtual-chassis aliases serial-number JW0217520118 alias-name ex2300-sw1-re1
+#
+# VLANs
+set vlans OfficeVLAN vlan-id 101
+set vlans OfficeVLAN l3-interface irb.101
+set vlans VoiceVLAN vlan-id 97
+set vlans default vlan-id 1
+set vlans default l3-interface irb.0
+#
+# POE
+set poe interface all
