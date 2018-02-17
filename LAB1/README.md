@@ -23,10 +23,10 @@ ex2300-sw2 | 192.0.2.16 | vme.0 | 18
 ex2300-sw3 | 192.0.2.17 | vme.0 | 19
 
 #### VLANS and L3 Interfaces
-Device | Layer 3 IP | Layer 3 VLAN
----|---|---
-ex2300-sw1 | 10.0.2.254 | 101
-ex2300-sw2 | 10.0.2.253 | 101
-ex2300-sw3 | 10.0.2.252 | 101
+Device | Layer 3 IP | L3 Interface | Layer 3 VLAN
+---|---|---|---
+ex2300-sw1 | 10.0.2.254 | irb.101 | 101
+ex2300-sw2 | 10.0.2.253 | irb.101 |101
+ex2300-sw3 | 10.0.2.252 | irb.101 |101
 
 
