@@ -1,0 +1,55 @@
+#
+# Juniper lab v0.1
+#
+# ge-0/0/0.0: management interface
+# ge-0/0/1.0 - ge-0/0/7.0: user interfaces
+
+Vagrant.configure(2) do |config|
+  config.vm.box = "juniper/ffp-12.1X47-D15.4-packetmode"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = 512
+    vb.cpus = 2
+    vb.gui = false
+  end
+
+  config.vm.define "vsrx1" do |vsrx1|
+    vsrx1.vm.host_name = "vsrx1"
+    vsrx1.vm.network "private_network",
+                     ip: "10.99.12.1",
+                     virtualbox__intnet: "1-2"
+    vsrx1.vm.network "private_network",
+                     ip: "10.99.13.1",
+                     virtualbox__intnet: "1-3"
+  end
+
+  config.vm.define "vsrx2" do |vsrx2|
+    vsrx2.vm.host_name = "vsrx2"
+    vsrx2.vm.network "private_network",
+                     ip: "10.99.23.2",
+                     virtualbox__intnet: "2-3"
+    vsrx2.vm.network "private_network",
+                     ip: "10.99.12.2",
+                     virtualbox__intnet: "1-2"
+  end
+
+  config.vm.define "vsrx3" do |vsrx3|
+    vsrx3.vm.host_name = "vsrx3"
+    vsrx3.vm.network "private_network",
+                     ip: "10.99.13.3",
+                     virtualbox__intnet: "1-3"
+    vsrx3.vm.network "private_network",
+                     ip: "10.99.23.3",
+                     virtualbox__intnet: "2-3"
+    vsrx3.vm.network "private_network",
+                     ip: "10.99.34.3",
+                     virtualbox__intnet: "3-4"
+  end
+
+  config.vm.define "vsrx4" do |vsrx4|
+    vsrx4.vm.host_name = "vsrx4"
+    vsrx4.vm.network "private_network",
+                      ip: "10.99.34.4",
+                      virtualbox__intnet: "3-4"
+  end
+end

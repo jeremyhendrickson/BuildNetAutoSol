@@ -11,41 +11,30 @@ Need proof of life for Ansible
 
 #### Topology
 ```
-+-----+
-| sw1 |
-+-----+
-   |
-   |
-+-----+
-| sw2 |
-+-----+
-   |
-   |
-+-----+
-| sw3 |
-+-----+
++-------+          +-------+          +-------+
+|       |1-3    1-3|       |3-4    3-4|       |
+| vsrx1 |----------| vsrx3 |----------| vsrx4 |
+|       |          |       |          |       |
++-------+          +-------+          +-------+
+    | 1-2           2-3|                  |4-1
+    |                  |                  |
+    |                  |                  |
+    |                  |                  |
+    | 1-2              |                  |4-1
++-------+              |              +-------+
+|       |2-3           |              |       |
+| vsrx2 |---------------              | srv1  |
+|       |                             |       |
++-------+                             +-------+
 ```
 
 #### Interfaces
 
-Device | Interface | Device | Interface
----|---|---|---
-sw1 | ge-0/1/2 | sw2 | ge-0/1/2
-sw2 | xe-0/1/3 | sw3 | xe-0/1/2
-
-#### VLANS and L3 Interfaces
-Device | Layer 3 IP | L3 Interface | Layer 3 VLAN
----|---|---|---
-ex2300-sw1 | 10.0.2.254 | irb.101 | 101
-ex2300-sw2 | 10.0.2.253 | irb.101 |101
-ex2300-sw3 | 10.0.2.252 | irb.101 |101
-
-#### OOB Interfaces
-I plan to use Ansible to manage devices via their OOB or Management VRFs.  That is how I am currently connecting to the EX2300 switches.
-
-Device | Management IP | Interface | Console Port
----|---|---|---
-ex2300-sw1 | 192.0.2.15 | vme.0 | 17
-ex2300-sw2 | 192.0.2.16 | vme.0 | 18
-ex2300-sw3 | 192.0.2.17 | vme.0 | 19
+Device | Interface | L3 IP | Device | Interface | L3 IP
+---|---|---|---|---|---
+vsrx1 | ge-0/0/1 | 10.99.12.1/24 | vsrx2 | ge-0/0/2 | 10.99.12.2/24
+vsrx1 | ge-0/0/2 | 10.99.13.1/24 | vsrx3 | ge-0/0/1 | 10.99.13.3/24
+vsrx2 | ge-0/0/1 | 10.99.23.2/24 | vsrx3 | ge-0/0/2 | 10.99.23.3/24
+vsrx3 | ge-0/0/3 | 10.99.34.3/24 | vsrx4 | ge-0/0/1 | 10.99.34.4/24
+vsrx4 | ge-0/0/3 | 10.4.0.1/24 | srv1 | eth1 | 10.4.0.2/24
 
