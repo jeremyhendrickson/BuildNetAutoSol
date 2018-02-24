@@ -2,7 +2,7 @@
 
 I built a virtual lab with Juniper VSRX, based upon Topology and Vagrant found at [JNPRAutomate/vagrant-junos](https://github.com/JNPRAutomate/vagrant-junos).
 
-I have built a development system on my laptop using Vagrant to spin up the topology below.  I am running Ubuntu/Trusty inside VirtualBox as my Ansible host.  I am not yet ready to commit to running Ansible locally on Mac OS X.
+I have built a development environment on my laptop using Vagrant to spin up the topology below.  I am running Ubuntu/Trusty inside VirtualBox as my Ansible host.  I am not yet ready to commit to running Ansible locally on Mac OS X.
 
 !!!!!
 Need proof of life for Ansible
