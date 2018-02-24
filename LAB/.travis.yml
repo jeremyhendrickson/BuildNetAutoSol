@@ -1,0 +1,24 @@
+language: ruby
+
+rvm:
+  - 2.0.0
+  - 2.1.5
+
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq -y bsdtar
+  - rvm @global do gem uninstall bundler --all --executables
+  - gem uninstall bundler --all --executables
+  - gem install bundler --version '< 1.7.0'
+
+script:
+  - bundle exec rake build
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
