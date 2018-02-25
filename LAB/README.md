@@ -54,10 +54,13 @@ vsrx4 | ge-0/0/3 | 10.4.0.1/24 | srv1 | eth1 | 10.4.0.2/24
 
 Device | Interface | Management IP
 ---|---|---
-ansible-srv | eth1 | 10.100.0.10/24
-vsrx1 | ge-0/0/3 | 10.100.0.1/24
-vsrx1 | ge-0/0/3 | 10.100.0.2/24
-vsrx1 | ge-0/0/3 | 10.100.0.3/24
-vsrx1 | ge-0/0/3 | 10.100.0.4/24
-srv1 | eth2 | 10.100.0.5/24
-ansible-srv | eth1 | 10.100.0.10
+ansible-srv | eth1 | 10.100.1.10/24
+ansible-srv | eth1:1 | 10.100.2.10/24
+ansible-srv | eth1:2 | 10.100.3.10/24
+ansible-srv | eth1:3 | 10.100.4.10/24
+ansible-srv | eth1:4 | 10.100.5.10/24
+vsrx1 | ge-0/0/3 | 10.100.1.2/24
+vsrx2 | ge-0/0/3 | 10.100.2.2/24
+vsrx3 | ge-0/0/3 | 10.100.3.2/24
+vsrx4 | ge-0/0/3 | 10.100.4.2/24
+srv1 | eth2 | 10.100.5.2/24
