@@ -45,36 +45,36 @@ Vagrant.configure(2) do |config|
                      virtualbox__intnet: "management"
   end
 
-#  config.vm.define "vsrx3" do |vsrx3|
-#    vsrx3.vm.host_name = "vsrx3"
-#    vsrx3.vm.box = "juniper/ffp-12.1X47-D15.4-packetmode"
-#    vsrx3.vm.network "private_network",
-#                     ip: "10.99.13.3",
-#                     virtualbox__intnet: "1-3"
-#    vsrx3.vm.network "private_network",
-#                     ip: "10.99.23.3",
-#                     virtualbox__intnet: "2-3"
-#    vsrx3.vm.network "private_network",
-#                     ip: "10.99.34.3",
-#                     virtualbox__intnet: "3-4"
-#    vsrx3.vm.network "private_network",
-#                     ip: "10.100.0.3",
-#                     virtualbox__intnet: "management"
-#  end
+  config.vm.define "vsrx3" do |vsrx3|
+    vsrx3.vm.host_name = "vsrx3"
+    vsrx3.vm.box = "juniper/ffp-12.1X47-D15.4-packetmode"
+    vsrx3.vm.network "private_network",
+                     ip: "10.99.13.3",
+                     virtualbox__intnet: "1-3"
+    vsrx3.vm.network "private_network",
+                     ip: "10.99.23.3",
+                     virtualbox__intnet: "2-3"
+    vsrx3.vm.network "private_network",
+                     ip: "10.99.34.3",
+                     virtualbox__intnet: "3-4"
+    vsrx3.vm.network "private_network",
+                     ip: "10.100.3.2",
+                     virtualbox__intnet: "management"
+  end
 
-#  config.vm.define "vsrx4" do |vsrx4|
-#    vsrx4.vm.host_name = "vsrx4"
-#    vsrx4.vm.box = "juniper/ffp-12.1X47-D15.4-packetmode"
-#    vsrx4.vm.network "private_network",
-#                      ip: "10.99.34.4",
-#                      virtualbox__intnet: "3-4"
-#    vsrx4.vm.network "private_network",
-#                      ip: "10.4.0.1",
-#                      virtualbox__intnet: "4-1"
-#    vsrx4.vm.network "private_network",
-#                     ip: "10.100.0.4",
-#                     virtualbox__intnet: "management"
-#  end
+  config.vm.define "vsrx4" do |vsrx4|
+    vsrx4.vm.host_name = "vsrx4"
+    vsrx4.vm.box = "juniper/ffp-12.1X47-D15.4-packetmode"
+    vsrx4.vm.network "private_network",
+                      ip: "10.99.34.4",
+                      virtualbox__intnet: "3-4"
+    vsrx4.vm.network "private_network",
+                      ip: "10.4.0.1",
+                      virtualbox__intnet: "4-1"
+    vsrx4.vm.network "private_network",
+                     ip: "10.100.4.2",
+                     virtualbox__intnet: "management"
+  end
 #  config.vm.define "srv1" do |srv1|
 #    srv1.vm.host_name = "srv1"
 #    config.vm.box = "robwc/minitrusty64"
@@ -82,7 +82,7 @@ Vagrant.configure(2) do |config|
 #                      ip: "10.4.0.2",
 #                      virtualbox__intnet: "4-1"
 #    srv1.vm.network "private_network",
-#                     ip: "10.100.0.5",
+#                     ip: "10.100.5.2",
 #                     virtualbox__intnet: "management"
 #  end
   config.vm.define "ansible-srv" do |mansrv|
@@ -105,5 +105,8 @@ Vagrant.configure(2) do |config|
     mansrv.vm.provision "shell",
                      run: "always",
                      inline: "ifconfig eth1:3 10.100.4.10 netmask 255.255.255.0 up"
+    mansrv.vm.provision "shell",
+                     run: "always",
+                     inline: "ifconfig eth1:4 10.100.5.10 netmask 255.255.255.0 up"
   end
 end
