@@ -33,7 +33,7 @@ Output omitted for berevity.  See [gather-facts.txt](gather-facts.txt)
 ## Generate Network Graph from LLDP
 I imported the [Ansible Example](https://github.com/ipspace/ansible-examples) [LLDP-to-Graph-eznc](https://github.com/ipspace/ansible-examples/tree/master/LLDP-to-Graph-pyeznc) to a sub directory.  I then copied my inventory file to the sub directory.  I had to modify the example command to make it work for my topology. 
 
-Here is my modified command to generate the network graph 
+My modified command:
 ```
 ansible-playbook -i inventory.inv LLDP-to-Graph-eznc.yml -u ansible -k
 dot -Tpng network.dot > network.png
