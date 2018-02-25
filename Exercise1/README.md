@@ -1,5 +1,5 @@
 # Exercise 1 - Connect Ansible to LAB
-The goal of this exercise is to verify Ansible can connect to the [LAB](../LAB) and complete a task.
+The goal of this exercise is to verify Ansible can connect to the [LAB](../LAB) and complete a task.  I chose to gather facts as the the initial proof of life for Ansible to my LAB topology.  I then used an existing Ansible Example to generate a Network Graph from LLDP neighbor relationships.
 
 ## Gather Facts
 Run an initial ansible playbook to gather facts about the hosts.
