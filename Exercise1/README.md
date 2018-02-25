@@ -35,8 +35,22 @@ I imported the [Ansible Example](https://github.com/ipspace/ansible-examples) [L
 
 My modified command:
 ```
-ansible-playbook -i inventory.inv LLDP-to-Graph-eznc.yml -u ansible -k
-dot -Tpng network.dot > network.png
+$ ansible-playbook -i inventory.inv LLDP-to-Graph-eznc.yml -u ansible -k
+SSH password:
+
+PLAY [Fetch LLDP information from network elements and produce physical topology] *********************************************************************************************
+
+TASK [Get LLDP neighbors using table/views] ***********************************************************************************************************************************
+ok: [10.100.1.2]
+ok: [10.100.3.2]
+ok: [10.100.4.2]
+ok: [10.100.2.2]
+
+TASK [print] 
+
+Rest of Output OMITTED for brevity
+
+$ dot -Tpng network.dot > network.png
 ```
 Here is the resulting dot file.
 ```
