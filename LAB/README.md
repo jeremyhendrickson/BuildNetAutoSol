@@ -1,6 +1,6 @@
 ## Build a Network Automation LAB
 
-I built a virtual lab with Juniper VSRX, based upon Topology and Vagrant found at [JNPRAutomate/vagrant-junos](https://github.com/JNPRAutomate/vagrant-junos).
+I built a virtual lab with Juniper VSRX, based upon Topology and Vagrant found at [JNPRAutomate/vagrant-junos](https://github.com/JNPRAutomate/vagrant-junos).  I have also included the Ansible [install script](https://github.com/ipspace/NetOpsWorkshop/tree/master/install) created by Ivan with IpSpace.net.  The script should be run after the Ansible VM is up for the first time.
 
 I have built a development environment on my laptop using Vagrant to spin up the topology below.  I am running Ubuntu/Trusty inside VirtualBox as my Ansible host.  I am not yet ready to commit to running Ansible locally on Mac OS X.
 
